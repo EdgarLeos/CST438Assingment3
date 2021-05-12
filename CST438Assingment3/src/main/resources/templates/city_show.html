@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th= "www.thymeleaf.org">
 <head>
-<title>Movie</title>
+<title>City</title>
 </head>
 <body>
 	<h2 th:inline="text">City</h2>
@@ -13,6 +13,25 @@
 	Population: <span th:inline= "text"> [[${city.population}]]</span><br />
 	Local Weather: <span th:inline= "text"> [[${city.temp}]]</span><br />
 	Local Time: <span th:inline= "text"> [[${city.time}]]</span><br />
+	
+	<br/>
+	
+	For a fabulous weekend get away for 2 to <span th:inline= "text"> [[${city.name}]]</span> sign up here.
+	<br/>
+	<form action = "#" th:action="@{/cities/reservation" th:object="${cityReservation}" method = "post">
+	
+		<input type = "hidden" th:filed = "*{city}" value = "[[${city.name}]]">
+		Email <input type = "text" th:field  ="*{email}">
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+			
+		<input type ="radio" th:filed = "*{level}" name = "lux" value = "Luxury">
+		<label for ="lux"> Luxury $1000</label><br />
+		<input type ="radio" th:filed = "*{level}" name = "mod" value = "Moderate">
+		<label for ="mod"> Very Good $500</label><br />
+		<input type ="radio" th:filed = "*{level}" name = "budget" value = "Budget">
+		<label for ="budget"> Good $350</label><br />	
+		<input type = "submit" value="Submit" />	
+	</form>
 	
 	
 </body>
