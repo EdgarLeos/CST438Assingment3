@@ -26,7 +26,7 @@ public class CityController {
 		return "city_show";
 	}
 	
-	@PostMapping("ciies/reservation")
+	@PostMapping("/cities/reservation")
 	public String createReservation(
 			@RequestParam("city") String cityName,
 			@RequestParam("level") String level,
@@ -36,7 +36,7 @@ public class CityController {
 		model.addAttribute("level", level);
 		model.addAttribute("email", email);
 		CityService.requestReservation(cityName,level,email);
-		return "request_reservartion";
+		return "request_reservation";
 		
 	}
 

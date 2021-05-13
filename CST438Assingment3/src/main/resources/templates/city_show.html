@@ -18,17 +18,16 @@
 	
 	For a fabulous weekend get away for 2 to <span th:inline= "text"> [[${city.name}]]</span> sign up here.
 	<br/>
-	<form action = "#" th:action="@{/cities/reservation" th:object="${cityReservation}" method = "post">
+	<form action = "/cities/reservation" method = "post">
 	
-		<input type = "hidden" th:filed = "*{city}" value = "[[${city.name}]]">
-		Email <input type = "text" th:field  ="*{email}">
-			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-			
-		<input type ="radio" th:filed = "*{level}" name = "lux" value = "Luxury">
+
+		Email <input type = "text" name ="email"><br />
+		<input type ="hidden" th:name = "city" th:value = "${city.name}">
+		<input type ="radio" name = "level" value = "Luxury">
 		<label for ="lux"> Luxury $1000</label><br />
-		<input type ="radio" th:filed = "*{level}" name = "mod" value = "Moderate">
+		<input type ="radio" name = "level" value = "Moderate">
 		<label for ="mod"> Very Good $500</label><br />
-		<input type ="radio" th:filed = "*{level}" name = "budget" value = "Budget">
+		<input type ="radio" name= "level"  value = "Budget">
 		<label for ="budget"> Good $350</label><br />	
 		<input type = "submit" value="Submit" />	
 	</form>
